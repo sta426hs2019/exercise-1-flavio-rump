@@ -1,0 +1,40 @@
+---
+title: "Exercise1"
+author: "Flavio Rump"
+date: "9/23/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## First Week Exercise
+
+Plotting The Log Normal Distribution
+```{r Code Block 1, echo = TRUE, message=FALSE}
+
+datapoints <- rlnorm(100, 1, 0.25)
+loggedpoints <- log(datapoints)
+
+
+
+# Plotly chart 
+library(plotly)
+plot_ly(x = datapoints, type = "histogram", histnorm = "probability") %>% 
+    layout(title = "Histogram of Distribution", 
+         xaxis = list(title = "Values"),
+         yaxis = list(title = "Prevalence"))
+  
+plot_ly(x = loggedpoints, type = "histogram", histnorm = "probability") %>% 
+  layout(title = "Histogram of Log Distribution", 
+         xaxis = list(title = "Values"),
+         yaxis = list(title = "Prevalence"))
+
+```
+
+The mean of this distribution is `r mean(datapoints)`, and the variance is `r var(datapoints)`.
+
+
+
+
